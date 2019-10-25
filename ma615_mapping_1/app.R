@@ -16,7 +16,7 @@ mapWorld <- map_data("world")
 projections <- c("cylindrical","mercator","sinusoidal","gnomonic","rectangular","cylequalarea")
 
 ui <- fluidPage(
-    titlePanel("The World Map!"),
+    titlePanel("World Map"),
     
     sidebarLayout(
         sidebarPanel(
