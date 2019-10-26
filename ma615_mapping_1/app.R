@@ -12,8 +12,8 @@ library(shiny)
 
 
 pacman::p_load("ggmap","maptools","maps","mapproj","shiny")
-mapWorld <- map_data("world")
-projections <- c("cylindrical","mercator","sinusoidal","gnomonic","rectangular","cylequalarea")
+world_map <- map_data("world")
+projections <- c("mollweide","mercator","sinusoidal","gilbert","azequalarea","laue")
 
 ui <- fluidPage(
     titlePanel("World Map"),
@@ -32,7 +32,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
     output$mymap <- renderPlot(
-        ggplot(mapWorld, aes(x=long, y=lat, group=group))+
+        ggplot(world_map, aes(x=long, y=lat, group=group))+
             geom_polygon(fill="white", color="black") +
             coord_map(input$p,xlim = input$rng1 ,ylim = input$rng2)
     )
