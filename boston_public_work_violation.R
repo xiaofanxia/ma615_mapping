@@ -37,7 +37,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       selectInput("x", "Violation", Description),
-      selectInput("s", "Street", Street),
+      #selectInput("s", "Street", Street),
       selectInput("c","City",City),
       actionButton("resetBeatSelection", "Reset Map Selection")
     ),
@@ -51,7 +51,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   # pull out the data
   selected <- reactive(
-    map %>% filter(Description==input$x & Street==input$s & City==input$c)
+    map %>% filter(Description==input$x  & City==input$c)
   )
   # output the map 
   output$mymap <- renderLeaflet(
